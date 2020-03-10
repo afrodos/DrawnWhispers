@@ -23,19 +23,14 @@ namespace DrawnWhispers
         const int ups = 20; //update per second
         Point firstPoint;
         bool first = true;//slim? nee
-        bool isMouseDown = false;
 
         //https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics?view=netframework-4.8
         //DrawLine(Pen, Point, Point)
         private void Form1_Load(object sender, EventArgs e)
         {
-            pen = new Pen(Color.Blue, 5);
+            pen = new Pen(Color.Blue, 10);
             g = pictureBox1.CreateGraphics();
-            Thread thread = new Thread(canvasloop);
-            thread.Start();
-            g.DrawLine(pen, new Point(0, 0), new Point(1080,1920));
         }
-
         void placeLine()
         {
             if (first)
@@ -52,36 +47,12 @@ namespace DrawnWhispers
 
         }
 
-        void canvasloop() //diff thread
-        {
-            while(isMouseDown)
-            {
-               placeLine();
-            }
-        }
-
-
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            isMouseDown = true;
-        }
-
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            isMouseDown = false;
-        }
-        int i = 0;
-
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            Thread.Sleep(100000);
-            pen = new Pen(Color.Blue, 5);
-            g = pictureBox1.CreateGraphics();
-            Thread thread = new Thread(canvasloop);
-            thread.Start();
-            g.DrawLine(pen, new Point(0, i), new Point(1080, i));
-            i += 5;
+            while (true)
+            {
+                placeLine();
+            }
         }
     }
 }
