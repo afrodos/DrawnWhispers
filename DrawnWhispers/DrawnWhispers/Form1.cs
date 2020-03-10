@@ -20,39 +20,51 @@ namespace DrawnWhispers
 
         Graphics g;
         Pen pen;
-        const int ups = 20; //update per second
-        Point firstPoint;
-        bool first = true;//slim? nee
+        const int ups = 100; //update per second
+        int x = -1;
+        int y = -1;
+        bool moving = false;
 
         //https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics?view=netframework-4.8
         //DrawLine(Pen, Point, Point)
         private void Form1_Load(object sender, EventArgs e)
         {
             pen = new Pen(Color.Blue, 10);
-            g = pictureBox1.CreateGraphics();
+            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            g = canvas.CreateGraphics();
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
         }
-        void placeLine()
+
+        private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (first)
+            moving = true;
+            x = e.X;
+            y = e.Y;
+        }
+
+        private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            moving = false;
+            x = -1;
+            x = -1;
+        }
+
+        private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(moving && x != -1 && y != -1)
             {
-                firstPoint = Cursor.Position;
-                first = false;
+                g.DrawLine(pen, new Point(x, y), e.Location);
+                x = e.X;
+                y = e.Y;
                 Thread.Sleep((int)Math.Round(Convert.ToDecimal(1000 / ups)));//dont touch
             }
-            else
-            {
-                g.DrawLine(pen, firstPoint, Cursor.Position);
-                first = true;
-            }
 
         }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        private void Panel1_Click(object sender, EventArgs e)
         {
-            while (true)
-            {
-                placeLine();
-            }
+            Panel p = (Panel)sender;
+            pen.Color = p.BackColor;
         }
     }
 }
