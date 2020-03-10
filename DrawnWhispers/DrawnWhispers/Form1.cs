@@ -31,6 +31,7 @@ namespace DrawnWhispers
         {
             pen = new Pen(Color.Blue, 10);
             pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             g = canvas.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
         }
@@ -65,6 +66,28 @@ namespace DrawnWhispers
         {
             Panel p = (Panel)sender;
             pen.Color = p.BackColor;
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            PictureBox p = (PictureBox)sender;
+            switch (p.Tag)
+            {
+                case "small":
+                    pen.Width = 5;
+                    break;
+                case "normal":
+                    pen.Width = 10;
+                    break;
+                case "large":
+                    pen.Width = 20;
+                    break;
+                case "huge":
+                    pen.Width = 40;
+                    break;
+
+            }
+
         }
     }
 }
