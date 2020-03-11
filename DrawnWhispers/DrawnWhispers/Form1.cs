@@ -17,7 +17,7 @@ namespace DrawnWhispers
         {
             InitializeComponent();
         }
-
+       
         Graphics g;
         Pen pen;
         const int ups = 100; //update per second
@@ -34,6 +34,7 @@ namespace DrawnWhispers
             pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             g = canvas.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            
         }
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -52,7 +53,8 @@ namespace DrawnWhispers
 
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(moving && x != -1 && y != -1)
+            
+            if (moving && x != -1 && y != -1)
             {
                 g.DrawLine(pen, new Point(x, y), e.Location);
                 x = e.X;
@@ -60,6 +62,8 @@ namespace DrawnWhispers
                 Thread.Sleep((int)Math.Round(Convert.ToDecimal(1000 / ups)));//dont touch
             }
 
+
+            
         }
 
         private void Panel1_Click(object sender, EventArgs e)
@@ -88,6 +92,18 @@ namespace DrawnWhispers
 
             }
 
+        }
+
+        private void canvas_Paint(object sender, PaintEventArgs e)
+        {
+            Point local = this.PointToClient(Cursor.Position);
+            e.Graphics.DrawEllipse(Pens.Red, local.X - 25, local.Y - 25, 20, 20);
+            Invalidate();
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            Invalidate();
         }
     }
 }
