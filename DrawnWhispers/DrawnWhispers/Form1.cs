@@ -16,8 +16,19 @@ namespace DrawnWhispers
         public Form1()
         {
             InitializeComponent();
+            gameUtils util = new gameUtils();
+            string[,] order = util.getOrder(new string[] { "syas", "eiji", "davy", "ties", "redmer", "maikel" });
+            MessageBox.Show(order[0,3]);
+            //[["syas"],["eiji"],["davy"],["ties"],["redmer"],["maikel"]]
+
         }
-       
+
+        //TODO: maak andere form die je bij het begin krijgt (title, naam invoeren, communicatie tussen 2 forms)
+        //images voor groottes
+        //woord boven canvas display
+        //zie welke kleur je geselect hebt
+
+
         Graphics g;
         Pen pen;
         const int ups = 100; //update per second
