@@ -20,15 +20,18 @@ namespace DrawnWhispers
             {
                 for (int x = 0; x <= people.Length - 1; x++)
                 {
-                    if (x + i == 6)
-                    {
-                        x = 0;
-                        break;
-                    }
-                    orderedArr[i, x + i] = people[x + i];
+                    orderedArr[i, x] = people[overflow(x++, people.Length)];
                 }
             }
             return orderedArr; 
+        }
+
+        private int overflow(int index, int arrlength) //ik moest een nacht slapen om dit te makken
+        {
+            if (index >= 0 && index < arrlength)
+                return index;
+            else
+                return overflow(index - arrlength, arrlength);
         }
 
     }

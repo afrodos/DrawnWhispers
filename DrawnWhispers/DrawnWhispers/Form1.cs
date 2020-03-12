@@ -18,7 +18,7 @@ namespace DrawnWhispers
             InitializeComponent();
             gameUtils util = new gameUtils();
             string[,] order = util.getOrder(new string[] { "syas", "eiji", "davy", "ties", "redmer", "maikel" });
-            MessageBox.Show(order[0,3]);
+            MessageBox.Show(order[2,0]);
             //[["syas"],["eiji"],["davy"],["ties"],["redmer"],["maikel"]]
 
         }
