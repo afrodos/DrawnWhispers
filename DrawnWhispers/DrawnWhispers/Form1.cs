@@ -17,9 +17,8 @@ namespace DrawnWhispers
         {
             InitializeComponent();
             gameUtils util = new gameUtils();
-            string[,] order = util.getOrder(new string[] { "syas", "eiji", "davy", "ties", "redmer", "maikel" });
-            MessageBox.Show(order[2,0]);
-            //[["syas"],["eiji"],["davy"],["ties"],["redmer"],["maikel"]]
+            string[,] order = util.getOrder(new string[] { "syas", "eiji", "davy", "ties", "redmer", "maikel", "bess" });
+            MessageBox.Show(order[6,1]); //WHAHAHAHAHAHHAHH HET WERKT
 
         }
 
@@ -27,6 +26,8 @@ namespace DrawnWhispers
         //images voor groottes
         //woord boven canvas display
         //zie welke kleur je geselect hebt
+        //convert tekening naar data (dus naar 2d array of image)
+        //timer voor tekenen
 
 
         Graphics g;

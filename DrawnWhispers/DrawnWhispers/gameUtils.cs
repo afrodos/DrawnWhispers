@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace DrawnWhispers
-{
-    class gameUtils
+class gameUtils
     {
         public gameUtils()
         {
@@ -16,15 +13,15 @@ namespace DrawnWhispers
         public string[,] getOrder(string[] people)
         {
             string[,] orderedArr = new string[people.Length, people.Length];
-            for (int i = 0; i <= people.Length - 1; i++)
+            for (int i = 0; i < people.Length; i++)
             {
-                for (int x = 0; x <= people.Length - 1; x++)
+                for (int x = 0; x < people.Length; x++)
                 {
-                    orderedArr[i, x] = people[overflow(x++, people.Length)];
+                    orderedArr[i, x] = people[overflow(x+i, people.Length)];
                 }
             }
             return orderedArr; 
-        }
+        }//YEEEEEEEEEEEEEEEEEEEEEEES HIJ DOET HET
 
         private int overflow(int index, int arrlength) //ik moest een nacht slapen om dit te makken
         {
@@ -34,5 +31,5 @@ namespace DrawnWhispers
                 return overflow(index - arrlength, arrlength);
         }
 
-    }
 }
+
