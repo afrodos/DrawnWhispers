@@ -17,8 +17,8 @@ namespace DrawnWhispers
         {
             InitializeComponent();
             gameUtils util = new gameUtils();
-            string[,] order = util.getOrder(new string[] { "syas", "eiji", "davy", "ties", "redmer", "maikel", "bess" });
-            MessageBox.Show(order[6,1]); //WHAHAHAHAHAHHAHH HET WERKT
+            string[,] order = util.getOrder(new string[] { "syas", "eiji", "davy", "ties", "redmer", "maikel", "bessa" });
+            //MessageBox.Show(order[6,1]); //WHAHAHAHAHAHHAHH HET WERKT
 
         }
 
@@ -49,6 +49,8 @@ namespace DrawnWhispers
             this.DoubleBuffered = true;
             Point local = this.PointToClient(Cursor.Position);
             g.DrawEllipse(pen, local.X - 25, local.Y - 25, 20, 20);
+            Form2 begin = new Form2();
+            begin.Show();
         }
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -103,6 +105,5 @@ namespace DrawnWhispers
             }
 
         }
-        
     }
 }
