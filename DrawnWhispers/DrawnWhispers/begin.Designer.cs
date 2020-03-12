@@ -1,6 +1,6 @@
 ﻿namespace DrawnWhispers
 {
-    partial class Form2
+    partial class begin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // textBox1
@@ -61,11 +59,6 @@
             this.label1.Size = new System.Drawing.Size(760, 108);
             this.label1.TabIndex = 2;
             this.label1.Text = "Drawn Whispers";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form2
             // 
@@ -77,7 +70,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Form2";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,6 +80,5 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -11,9 +11,9 @@ using System.Threading; //delay
 
 namespace DrawnWhispers
 {
-    public partial class Form1 : Form
+    public partial class game : Form
     {
-        public Form1()
+        public game()
         {
             InitializeComponent();
             gameUtils util = new gameUtils();
@@ -29,6 +29,13 @@ namespace DrawnWhispers
         //convert tekening naar data (dus naar 2d array of image)
         //timer voor tekenen
 
+        /*
+          #F4E8DB
+          #C1B4A9
+          #756A62
+          #95534F
+          #CC6861
+         */
 
         Graphics g;
         Pen pen;
@@ -36,6 +43,7 @@ namespace DrawnWhispers
         int x = -1;
         int y = -1;
         bool moving = false;
+        Point lastPoint;
 
         //https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics?view=netframework-4.8
         //DrawLine(Pen, Point, Point)
@@ -49,25 +57,23 @@ namespace DrawnWhispers
             this.DoubleBuffered = true;
             Point local = this.PointToClient(Cursor.Position);
             g.DrawEllipse(pen, local.X - 25, local.Y - 25, 20, 20);
-            Form2 begin = new Form2();
-            begin.Show();
         }
-
-        private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
+        
+        private void canvas_MouseDown(object sender, MouseEventArgs e)
         {
             moving = true;
             x = e.X;
             y = e.Y;
         }
 
-        private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
+        private void canvas_MouseUp(object sender, MouseEventArgs e)
         {
             moving = false;
             x = -1;
             x = -1;
         }
 
-        private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (moving && x != -1 && y != -1)
             {
@@ -77,7 +83,7 @@ namespace DrawnWhispers
                 Thread.Sleep((int)Math.Round(Convert.ToDecimal(1000 / ups)));//dont touch
             }
         }
-
+        
         private void Panel1_Click(object sender, EventArgs e)
         {
             Panel p = (Panel)sender;
@@ -104,6 +110,20 @@ namespace DrawnWhispers
 
             }
 
+        }
+
+        private void TopBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void TopBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
         }
     }
 }

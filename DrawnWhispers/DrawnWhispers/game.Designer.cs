@@ -1,6 +1,6 @@
 ﻿namespace DrawnWhispers
 {
-    partial class Form1
+    partial class game
     {
         /// <summary>
         /// Required designer variable.
@@ -43,31 +43,33 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.topBar = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.sideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.topBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // canvas
             // 
-            this.canvas.BackColor = System.Drawing.Color.White;
+            this.canvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(232)))), ((int)(((byte)(219)))));
             this.canvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.canvas.Location = new System.Drawing.Point(0, 0);
             this.canvas.Name = "canvas";
-            this.canvas.Size = new System.Drawing.Size(1100, 650);
+            this.canvas.Size = new System.Drawing.Size(961, 650);
             this.canvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.canvas.TabIndex = 0;
             this.canvas.TabStop = false;
-            this.canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
-            this.canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
-            this.canvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseUp);
+            this.canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseDown);
+            this.canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseMove);
+            this.canvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseUp);
             // 
             // sideBar
             // 
-            this.sideBar.BackColor = System.Drawing.Color.Silver;
+            this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(180)))), ((int)(((byte)(169)))));
             this.sideBar.Controls.Add(this.pictureBox4);
             this.sideBar.Controls.Add(this.pictureBox3);
             this.sideBar.Controls.Add(this.pictureBox2);
@@ -206,25 +208,38 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(403, 24);
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(420, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 55);
+            this.label1.Size = new System.Drawing.Size(134, 58);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Word";
+            this.label1.Text = "word";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // topBar
+            // 
+            this.topBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(106)))), ((int)(((byte)(98)))));
+            this.topBar.Controls.Add(this.label1);
+            this.topBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topBar.Location = new System.Drawing.Point(0, 0);
+            this.topBar.Name = "topBar";
+            this.topBar.Size = new System.Drawing.Size(961, 87);
+            this.topBar.TabIndex = 3;
+            this.topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
+            this.topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
+            // 
+            // game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1100, 650);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.sideBar);
+            this.Controls.Add(this.topBar);
             this.Controls.Add(this.canvas);
+            this.Controls.Add(this.sideBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "game";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
@@ -233,8 +248,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.topBar.ResumeLayout(false);
+            this.topBar.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -255,6 +271,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel topBar;
     }
 }
 
