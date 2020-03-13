@@ -66,6 +66,7 @@ namespace DrawnWhispers
             y = e.Y;
         }
 
+
         private void canvas_MouseUp(object sender, MouseEventArgs e)
         {
             moving = false;

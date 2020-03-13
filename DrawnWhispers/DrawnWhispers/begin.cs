@@ -18,11 +18,13 @@ namespace DrawnWhispers
             InitializeComponent();
         }
 
+        gameUtils util = new gameUtils("descriptions.json");
         private void button1_Click(object sender, EventArgs e)
         {
-            game gameForm = new game();
-            gameForm.Show();
-            Hide();
+            richTextBox1.Text = util.getRandomDescription("special");
+            //game gameForm = new game();
+            //gameForm.Show();
+            //Hide();
         }
     }
 }
