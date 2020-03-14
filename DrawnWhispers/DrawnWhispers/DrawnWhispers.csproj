@@ -60,6 +60,12 @@
       <DependentUpon>begin.cs</DependentUpon>
     </Compile>
     <Compile Include="gameUtils.cs" />
+    <Compile Include="guess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="guess.Designer.cs">
+      <DependentUpon>guess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="game.resx">
@@ -67,6 +73,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="begin.resx">
       <DependentUpon>begin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="guess.resx">
+      <DependentUpon>guess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
