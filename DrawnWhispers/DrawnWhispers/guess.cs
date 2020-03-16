@@ -19,21 +19,6 @@ namespace DrawnWhispers
         }
 
         Point lastPoint;
-
-        private void GuessBox_Enter(object sender, EventArgs e)
-        {
-            if (guessBox.Text == "Enter description")
-            {
-                guessBox.Text = "";
-            }
-        }
-
-        private void GuessBox_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(guessBox.Text))
-                guessBox.Text = "Enter description";
-        }
-
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
@@ -46,6 +31,20 @@ namespace DrawnWhispers
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
+        }
+
+        private void GuessBox_Enter_1(object sender, EventArgs e)
+        {
+            if (GuessBox.Text == "Enter description")
+            {
+                GuessBox.Text = "";
+            }
+        }
+
+        private void GuessBox_Leave_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(GuessBox.Text))
+                GuessBox.Text = "Enter description";
         }
     }
 }

@@ -44,7 +44,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.topBar = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.selectedColorPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.sideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -71,7 +72,9 @@
             // sideBar
             // 
             this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(180)))), ((int)(((byte)(169)))));
-            this.sideBar.Controls.Add(this.panel10);
+            this.sideBar.Controls.Add(this.selectedColorPanel);
+            this.sideBar.Controls.Add(this.panel4);
+            this.sideBar.Controls.Add(this.panel2);
             this.sideBar.Controls.Add(this.pictureBox4);
             this.sideBar.Controls.Add(this.pictureBox3);
             this.sideBar.Controls.Add(this.pictureBox2);
@@ -80,9 +83,7 @@
             this.sideBar.Controls.Add(this.panel7);
             this.sideBar.Controls.Add(this.panel6);
             this.sideBar.Controls.Add(this.panel5);
-            this.sideBar.Controls.Add(this.panel4);
             this.sideBar.Controls.Add(this.panel3);
-            this.sideBar.Controls.Add(this.panel2);
             this.sideBar.Controls.Add(this.panel1);
             this.sideBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.sideBar.Location = new System.Drawing.Point(961, 0);
@@ -92,7 +93,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(28, 558);
+            this.pictureBox4.Location = new System.Drawing.Point(29, 548);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(80, 80);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -103,7 +104,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(28, 472);
+            this.pictureBox3.Location = new System.Drawing.Point(29, 468);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(80, 80);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -114,7 +115,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(28, 386);
+            this.pictureBox2.Location = new System.Drawing.Point(29, 391);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(80, 80);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -125,7 +126,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(28, 300);
+            this.pictureBox1.Location = new System.Drawing.Point(29, 312);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(80, 80);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -137,72 +138,72 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
-            this.panel8.Location = new System.Drawing.Point(83, 156);
+            this.panel8.Location = new System.Drawing.Point(69, 254);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(35, 35);
+            this.panel8.Size = new System.Drawing.Size(45, 45);
             this.panel8.TabIndex = 1;
             this.panel8.Click += new System.EventHandler(this.Panel1_Click);
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.MediumPurple;
-            this.panel7.Location = new System.Drawing.Point(83, 53);
+            this.panel7.Location = new System.Drawing.Point(69, 209);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(35, 35);
+            this.panel7.Size = new System.Drawing.Size(45, 45);
             this.panel7.TabIndex = 1;
             this.panel7.Click += new System.EventHandler(this.Panel1_Click);
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panel6.Location = new System.Drawing.Point(23, 105);
+            this.panel6.Location = new System.Drawing.Point(69, 164);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(35, 35);
+            this.panel6.Size = new System.Drawing.Size(45, 45);
             this.panel6.TabIndex = 1;
             this.panel6.Click += new System.EventHandler(this.Panel1_Click);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Yellow;
-            this.panel5.Location = new System.Drawing.Point(23, 53);
+            this.panel5.Location = new System.Drawing.Point(24, 164);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(35, 35);
+            this.panel5.Size = new System.Drawing.Size(45, 45);
             this.panel5.TabIndex = 1;
             this.panel5.Click += new System.EventHandler(this.Panel1_Click);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(23, 156);
+            this.panel4.Location = new System.Drawing.Point(24, 254);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(35, 35);
+            this.panel4.Size = new System.Drawing.Size(45, 45);
             this.panel4.TabIndex = 1;
             this.panel4.Click += new System.EventHandler(this.Panel1_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Blue;
-            this.panel3.Location = new System.Drawing.Point(83, 105);
+            this.panel3.Location = new System.Drawing.Point(69, 119);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(35, 35);
+            this.panel3.Size = new System.Drawing.Size(45, 45);
             this.panel3.TabIndex = 1;
             this.panel3.Click += new System.EventHandler(this.Panel1_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Green;
-            this.panel2.Location = new System.Drawing.Point(83, 3);
+            this.panel2.Location = new System.Drawing.Point(24, 209);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(35, 35);
+            this.panel2.Size = new System.Drawing.Size(45, 45);
             this.panel2.TabIndex = 1;
             this.panel2.Click += new System.EventHandler(this.Panel1_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.Location = new System.Drawing.Point(23, 3);
+            this.panel1.Location = new System.Drawing.Point(24, 119);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(35, 35);
+            this.panel1.Size = new System.Drawing.Size(45, 45);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.Panel1_Click);
             // 
@@ -222,6 +223,7 @@
             // topBar
             // 
             this.topBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(106)))), ((int)(((byte)(98)))));
+            this.topBar.Controls.Add(this.panel9);
             this.topBar.Controls.Add(this.label1);
             this.topBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.topBar.Location = new System.Drawing.Point(0, 0);
@@ -231,13 +233,21 @@
             this.topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
             // 
-            // panel10
+            // panel9
             // 
-            this.panel10.BackColor = System.Drawing.Color.White;
-            this.panel10.Location = new System.Drawing.Point(23, 208);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(95, 76);
-            this.panel10.TabIndex = 6;
+            this.panel9.BackColor = System.Drawing.Color.Pink;
+            this.panel9.Location = new System.Drawing.Point(961, 60);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(139, 24);
+            this.panel9.TabIndex = 4;
+            // 
+            // selectedColorPanel
+            // 
+            this.selectedColorPanel.BackColor = System.Drawing.Color.White;
+            this.selectedColorPanel.Location = new System.Drawing.Point(24, 23);
+            this.selectedColorPanel.Name = "selectedColorPanel";
+            this.selectedColorPanel.Size = new System.Drawing.Size(90, 90);
+            this.selectedColorPanel.TabIndex = 6;
             // 
             // game
             // 
@@ -282,7 +292,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel topBar;
-        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel selectedColorPanel;
     }
 }
 

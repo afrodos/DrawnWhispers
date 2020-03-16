@@ -16,8 +16,15 @@ namespace DrawnWhispers
         public game()
         {
             InitializeComponent();
-            gameUtils util = new gameUtils();
-            string[,] order = util.getOrder(new string[] { "syas", "eiji", "davy", "ties", "redmer", "maikel", "bessa" });
+            try{ pictureBox1.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[0])); }
+            catch { MessageBox.Show("Error loading " + imageFileNames[0]); }
+            try { pictureBox2.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[1])); }
+            catch { MessageBox.Show("Error loading " + imageFileNames[1]); }
+            try { pictureBox3.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[2])); }
+            catch { MessageBox.Show("Error loading " + imageFileNames[2]); }
+            try { pictureBox4.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[3])); }
+            catch { MessageBox.Show("Error loading " + imageFileNames[3]); }
+
             //MessageBox.Show(order[6,1]); //WHAHAHAHAHAHHAHH HET WERKT
 
         }
@@ -44,6 +51,17 @@ namespace DrawnWhispers
         int y = -1;
         bool moving = false;
         Point lastPoint;
+        string[] imageFileNames = { "rondje5px.png", "rondje10px.png", "rondje20px.png", "rondje40px.png" };
+        enum pensizes
+        {
+            small = 10,
+            normal = 20,
+            large = 35,
+            huge = 60
+
+        }
+
+
 
         //https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics?view=netframework-4.8
         //DrawLine(Pen, Point, Point)
@@ -88,6 +106,7 @@ namespace DrawnWhispers
         private void Panel1_Click(object sender, EventArgs e)
         {
             Panel p = (Panel)sender;
+            selectedColorPanel.BackColor = p.BackColor;
             pen.Color = p.BackColor;
         }
 
@@ -97,16 +116,16 @@ namespace DrawnWhispers
             switch (p.Tag)
             {
                 case "small":
-                    pen.Width = 5;
+                    pen.Width = (float)pensizes.small;
                     break;
                 case "normal":
-                    pen.Width = 10;
+                    pen.Width = (float)pensizes.normal;
                     break;
                 case "large":
-                    pen.Width = 20;
+                    pen.Width = (float)pensizes.large;
                     break;
                 case "huge":
-                    pen.Width = 40;
+                    pen.Width = (float)pensizes.huge;
                     break;
 
             }
