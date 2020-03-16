@@ -24,15 +24,14 @@ namespace DrawnWhispers
             catch { MessageBox.Show("Error loading " + imageFileNames[2]); }
             try { pictureBox4.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[3])); }
             catch { MessageBox.Show("Error loading " + imageFileNames[3]); }
+            try { pictureBox5.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[4])); }
+            catch { MessageBox.Show("Error loading " + imageFileNames[4]); }
 
             //MessageBox.Show(order[6,1]); //WHAHAHAHAHAHHAHH HET WERKT
 
         }
 
         //TODO: maak andere form die je bij het begin krijgt (title, naam invoeren, communicatie tussen 2 forms)
-        //images voor groottes
-        //woord boven canvas display
-        //zie welke kleur je geselect hebt
         //convert tekening naar data (dus naar 2d array of image)
         //timer voor tekenen
 
@@ -46,19 +45,19 @@ namespace DrawnWhispers
 
         Graphics g;
         Pen pen;
-        const int ups = 100; //update per second
+        const int ups = 50; //update per second
+
         int x = -1;
         int y = -1;
         bool moving = false;
         Point lastPoint;
-        string[] imageFileNames = { "rondje5px.png", "rondje10px.png", "rondje20px.png", "rondje40px.png" };
+        string[] imageFileNames = { "rondje5px.png", "rondje10px.png", "rondje20px.png", "rondje40px.png", "closeButton.png" };
         enum pensizes
         {
             small = 10,
             normal = 20,
             large = 35,
             huge = 60
-
         }
 
 
@@ -146,9 +145,15 @@ namespace DrawnWhispers
             lastPoint = new Point(e.X, e.Y);
         }
 
-        private void panel9_Paint(object sender, PaintEventArgs e)
+        private void PictureBox5_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
         {
 
+            //suc66666 deavyyyy
         }
     }
 }

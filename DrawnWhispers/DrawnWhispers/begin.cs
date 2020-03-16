@@ -13,29 +13,27 @@ namespace DrawnWhispers
 {
     public partial class begin : Form
     {
-
-        string logoFileName = "logo.png";
-
         public begin()
         {
             InitializeComponent();
-            try 
-            { 
-                pictureBox1.Image = Image.FromFile(String.Format(@"data\{0}", logoFileName)); 
-
-            }
-            catch
-            {
-                MessageBox.Show("Error loading Images, files missing in data");    
-            }
+            try { pictureBox1.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[0])); }
+            catch { MessageBox.Show("Error loading " + imageFileNames[0]); }
+            try { pictureBox2.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[1])); }
+            catch { MessageBox.Show("Error loading " + imageFileNames[1]); }
         }
 
         gameUtils util = new gameUtils("descriptions.json");
+        string[] imageFileNames = { "logo.png", "closeButton.png" };
         private void button1_Click(object sender, EventArgs e)
         {
             game ga = new game();
             ga.Show();
             Hide();
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
