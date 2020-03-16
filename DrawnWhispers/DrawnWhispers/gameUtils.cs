@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 class gameUtils
 {
@@ -40,32 +42,20 @@ class gameUtils
     }
     */
 
-    public string getRandomDescription(string theme = "standard")//deze hele function is het domste wat ik ooit heb gemaakt maar het werkt
+    public string getRandomDescription(string theme= "standard")//deze hele function is het domste wat ik ooit heb gemaakt maar het werkt
     {
         if (loaded)
         {
-            int arrLength = 0;
-            while (true)
-            {
-                try
-                {
-                    string s = jsonObject[theme][arrLength];
-                }
-                catch
-                {
-                    break;
-                }
-                arrLength++;
-            }
-            return jsonObject[theme][r.Next(arrLength)];//er is een bug waar die het eerste woord van de standard pakt???
+            JArray items = (JArray)jsonObject[theme];
+            return jsonObject[theme][r.Next(items.Count)];
         }
         else
         {
             //https://www.c-sharpcorner.com/article/json-serialization-and-deserialization-in-c-sharp/
             string jsonString = File.ReadAllText(String.Format(@"data\{0}", jsonFilename));
-            jsonObject = js.Deserialize<dynamic>(jsonString);
+            jsonObject = JObject.Parse(jsonString);
             loaded = true;
-            return getRandomDescription();
+            return getRandomDescription(theme);
         }
         
     }
@@ -77,5 +67,14 @@ class gameUtils
         else
             return overflow(index - arrlength, arrlength);
     }
-}
 
+    public void addtojson(string addtext, string theme = "standard")
+    {
+        string jsonString = File.ReadAllText(String.Format(@"data\{0}", jsonFilename));
+        JObject jobj = JObject.Parse(jsonString);
+        JArray item = (JArray)jobj[theme];
+        item.Add(addtext);
+        File.WriteAllText(String.Format(@"data\{0}", jsonFilename), jobj.ToString());
+    }
+}
+    

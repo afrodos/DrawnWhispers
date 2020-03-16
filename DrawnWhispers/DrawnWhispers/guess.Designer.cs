@@ -30,9 +30,9 @@
         {
             this.canvas = new System.Windows.Forms.PictureBox();
             this.topBar = new System.Windows.Forms.Panel();
-            this.guessBox = new System.Windows.Forms.TextBox();
             this.submitBtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.guessBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.topBar.SuspendLayout();
@@ -64,21 +64,6 @@
             this.topBar.Size = new System.Drawing.Size(961, 87);
             this.topBar.TabIndex = 4;
             // 
-            // guessBox
-            // 
-            this.guessBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(232)))), ((int)(((byte)(219)))));
-            this.guessBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.guessBox.Font = new System.Drawing.Font("Bahnschrift", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guessBox.HideSelection = false;
-            this.guessBox.Location = new System.Drawing.Point(12, 27);
-            this.guessBox.Name = "guessBox";
-            this.guessBox.Size = new System.Drawing.Size(850, 33);
-            this.guessBox.TabIndex = 0;
-            this.guessBox.Text = "Enter description";
-            this.guessBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.guessBox.Enter += new System.EventHandler(this.GuessBox_Enter);
-            this.guessBox.Leave += new System.EventHandler(this.GuessBox_Leave);
-            // 
             // submitBtn
             // 
             this.submitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(232)))), ((int)(((byte)(219)))));
@@ -106,6 +91,21 @@
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.Enter += new System.EventHandler(this.GuessBox_Enter);
             this.textBox1.Leave += new System.EventHandler(this.GuessBox_Leave);
+            // 
+            // guessBox
+            // 
+            this.guessBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(232)))), ((int)(((byte)(219)))));
+            this.guessBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.guessBox.Font = new System.Drawing.Font("Bahnschrift", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guessBox.HideSelection = false;
+            this.guessBox.Location = new System.Drawing.Point(12, 27);
+            this.guessBox.Name = "guessBox";
+            this.guessBox.Size = new System.Drawing.Size(850, 33);
+            this.guessBox.TabIndex = 0;
+            this.guessBox.Text = "Enter description";
+            this.guessBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.guessBox.Enter += new System.EventHandler(this.GuessBox_Enter);
+            this.guessBox.Leave += new System.EventHandler(this.GuessBox_Leave);
             // 
             // panel1
             // 
