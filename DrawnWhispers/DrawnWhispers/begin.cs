@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,11 +25,30 @@ namespace DrawnWhispers
 
         gameUtils util = new gameUtils("descriptions.json");
         string[] imageFileNames = { "logo.png", "closeButton.png" };
+        TcpClient client = new TcpClient();
+
         private void button1_Click(object sender, EventArgs e)
         {
-            game ga = new game();
-            ga.Show();
-            Hide();
+            client.Connect("192.168.0.111", 5002);
+            NetworkStream ns = client.GetStream();
+            Thread thread = new Thread(o => ReceiveData((TcpClient)o));
+
+
+            //game ga = new game();
+            //ga.Show();
+            //Hide();
+        }
+
+        static void ReceiveData(TcpClient client)
+        {
+            NetworkStream ns = client.GetStream();
+            byte[] receivedBytes = new byte[1024];
+            int byte_count;
+
+            while ((byte_count = ns.Read(receivedBytes, 0, receivedBytes.Length)) > 0)
+            {
+                MessageBox.Show((Encoding.ASCII.GetString(receivedBytes, 0, byte_count)));
+            }
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
