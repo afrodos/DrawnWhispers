@@ -33,6 +33,7 @@
             this.sideBar = new System.Windows.Forms.Panel();
             this.selectedColorPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.timerText = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -46,9 +47,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.topBar = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.timerText = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.sideBar.SuspendLayout();
@@ -113,6 +113,19 @@
             this.panel4.Size = new System.Drawing.Size(45, 45);
             this.panel4.TabIndex = 1;
             this.panel4.Click += new System.EventHandler(this.Panel1_Click);
+            // 
+            // timerText
+            // 
+            this.timerText.AutoSize = true;
+            this.timerText.BackColor = System.Drawing.Color.Transparent;
+            this.timerText.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerText.ForeColor = System.Drawing.Color.Black;
+            this.timerText.Location = new System.Drawing.Point(22, 25);
+            this.timerText.Name = "timerText";
+            this.timerText.Size = new System.Drawing.Size(87, 39);
+            this.timerText.TabIndex = 2;
+            this.timerText.Text = "10:00";
+            this.timerText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -248,14 +261,6 @@
             this.topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.Pink;
-            this.panel9.Location = new System.Drawing.Point(961, 60);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(139, 24);
-            this.panel9.TabIndex = 4;
-            // 
             // pictureBox5
             // 
             this.pictureBox5.Location = new System.Drawing.Point(12, 12);
@@ -266,18 +271,13 @@
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.PictureBox5_Click);
             // 
-            // timerText
+            // panel9
             // 
-            this.timerText.AutoSize = true;
-            this.timerText.BackColor = System.Drawing.Color.Transparent;
-            this.timerText.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timerText.ForeColor = System.Drawing.Color.Black;
-            this.timerText.Location = new System.Drawing.Point(28, 25);
-            this.timerText.Name = "timerText";
-            this.timerText.Size = new System.Drawing.Size(86, 39);
-            this.timerText.TabIndex = 2;
-            this.timerText.Text = "10:00";
-            this.timerText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel9.BackColor = System.Drawing.Color.Pink;
+            this.panel9.Location = new System.Drawing.Point(961, 60);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(139, 24);
+            this.panel9.TabIndex = 4;
             // 
             // timer1
             // 

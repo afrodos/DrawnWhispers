@@ -52,6 +52,9 @@ namespace DrawnWhispers
         bool moving = false;
         Point lastPoint;
         string[] imageFileNames = { "rondje5px.png", "rondje10px.png", "rondje20px.png", "rondje40px.png", "closeButton.png" };
+
+        public DateTime endTime { get; private set; }
+
         enum pensizes
         {
             small = 10,
@@ -74,6 +77,12 @@ namespace DrawnWhispers
             this.DoubleBuffered = true;
             Point local = this.PointToClient(Cursor.Position);
             g.DrawEllipse(pen, local.X - 25, local.Y - 25, 20, 20);
+
+            //timer
+            var tijd = 2; //tijd om te tekenen
+            var start = DateTime.UtcNow;
+             endTime = start.AddMinutes(tijd);
+            timer1.Enabled = true;
         }
         
         private void canvas_MouseDown(object sender, MouseEventArgs e)
@@ -152,8 +161,16 @@ namespace DrawnWhispers
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-
-            //suc66666 deavyyyy
+            TimeSpan remainingTime = endTime - DateTime.UtcNow;
+            if (remainingTime < TimeSpan.Zero)
+            {
+                timerText.Text = "Done!";
+                timerText.Enabled = false;
+            }
+            else
+            {
+                timerText.Text = remainingTime.ToString(@"mm\:ss");
+            }
         }
     }
 }

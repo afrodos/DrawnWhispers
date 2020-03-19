@@ -29,14 +29,14 @@ namespace DrawnWhispers
         WatsonTcpClient client = new WatsonTcpClient("192.168.0.185", 5002);
         private void button1_Click(object sender, EventArgs e)
         {
-            client.ServerConnected += Client_ServerConnected;
-            client.ServerDisconnected += Client_ServerDisconnected;
-            client.MessageReceived += Client_MessageReceived;
-            client.Start();
-            client.Send("\n\nPENIS");
-            //game ga = new game();
-            //ga.Show();
-            //Hide();
+            // client.ServerConnected += Client_ServerConnected;
+            // client.ServerDisconnected += Client_ServerDisconnected;
+            // client.MessageReceived += Client_MessageReceived;
+            // client.Start();
+            // client.Send("\n\nPENIS");
+            game ga = new game();
+            ga.Show();
+            Hide();
         }
 
         private void Client_MessageReceived(object sender, MessageReceivedFromServerEventArgs e)
