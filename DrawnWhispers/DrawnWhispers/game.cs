@@ -140,6 +140,11 @@ namespace DrawnWhispers
 
         }
 
+        int poxs = 0;
+        int poxz = 0;
+        bool fistws = true;
+        int combo = 0;
+
         private void TopBar_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -147,6 +152,35 @@ namespace DrawnWhispers
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
+            if (fistws)
+            {
+                poxs = e.X;
+                fistws = false;
+            }
+            else
+            {
+                poxz = e.X;
+                int diff = poxz - poxs;
+                if (diff < 0) diff *= -1;
+                if (diff >= 50)
+                {
+                    combo++;
+                    Thread t = new Thread(startdecay);
+                    t.Start();
+                }
+                if (combo == 4) //combo decay
+                {
+                    canvas.Invalidate();
+                    combo = 0;
+                }
+                fistws = true;
+            }
+        }
+
+        void startdecay()
+        {
+            Thread.Sleep(1000);
+            combo = 0;
         }
 
         private void TopBar_MouseDown(object sender, MouseEventArgs e)
