@@ -27,8 +27,6 @@ namespace DrawnWhispers
             try { pictureBox5.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[4])); }
             catch { MessageBox.Show("Error loading " + imageFileNames[4]); }
 
-            //MessageBox.Show(order[6,1]); //WHAHAHAHAHAHHAHH HET WERKT
-
         }
 
         //TODO: maak andere form die je bij het begin krijgt (title, naam invoeren, communicatie tussen 2 forms)
@@ -50,7 +48,6 @@ namespace DrawnWhispers
         int x = -1;
         int y = -1;
         bool moving = false;
-        Point lastPoint;
         string[] imageFileNames = { "rondje5px.png", "rondje10px.png", "rondje20px.png", "rondje40px.png", "closeButton.png" };
 
         public DateTime endTime { get; private set; }
@@ -140,52 +137,60 @@ namespace DrawnWhispers
 
         }
 
-        int poxs = 0;
-        int poxz = 0;
-        bool fistws = true;
+        int firstpos = 0;
+        int secondpos = 0;
+        bool isfirst = true;
         int combo = 0;
+        int threshold = 30;
+        int saveddiff = 2;
+        Point lastPoint;
+        bool mouseisdown = false;
 
         private void TopBar_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)//to move the form
             {
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
-            if (fistws)
+            if (isfirst)
             {
-                poxs = e.X;
-                fistws = false;
+                isfirst = false;
+                firstpos = e.X; 
             }
             else
             {
-                poxz = e.X;
-                int diff = poxz - poxs;
-                if (diff < 0) diff *= -1;
-                if (diff >= 50)
+                secondpos = e.X;
+                int diff = firstpos - secondpos;
+                if (Math.Sign(diff) != saveddiff && diff != 0 && mouseisdown && Math.Abs(diff) > 10)
                 {
-                    combo++;
-                    Thread t = new Thread(startdecay);
-                    t.Start();
+                    saveddiff = Math.Sign(diff);
+                    if (Math.Abs(diff) >= threshold)
+                    {
+                        combo++;
+                        Thread t = new Thread(startdecay);
+                        t.Start();
+                    }
                 }
-                if (combo == 4) //combo decay
-                {
-                    canvas.Invalidate();
-                    combo = 0;
-                }
-                fistws = true;
+                firstpos = secondpos;
+                Thread.Sleep(1);
+            }
+
+            if (combo == 5)
+            {
+                canvas.Invalidate();//clear the canvas
+                combo = 0;
             }
         }
-
         void startdecay()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             combo = 0;
         }
-
         private void TopBar_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
+            mouseisdown = true;
         }
 
         private void PictureBox5_Click(object sender, EventArgs e)
@@ -205,6 +210,11 @@ namespace DrawnWhispers
             {
                 timerText.Text = remainingTime.ToString(@"mm\:ss");
             }
+        }
+
+        private void topBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseisdown = false;
         }
     }
 }

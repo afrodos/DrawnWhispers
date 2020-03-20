@@ -122,7 +122,7 @@
             this.timerText.ForeColor = System.Drawing.Color.Black;
             this.timerText.Location = new System.Drawing.Point(22, 25);
             this.timerText.Name = "timerText";
-            this.timerText.Size = new System.Drawing.Size(87, 39);
+            this.timerText.Size = new System.Drawing.Size(86, 39);
             this.timerText.TabIndex = 2;
             this.timerText.Text = "10:00";
             this.timerText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -260,6 +260,7 @@
             this.topBar.TabIndex = 3;
             this.topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
+            this.topBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.topBar_MouseUp);
             // 
             // pictureBox5
             // 

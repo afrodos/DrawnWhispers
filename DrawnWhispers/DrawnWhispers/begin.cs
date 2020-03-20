@@ -29,11 +29,11 @@ namespace DrawnWhispers
         WatsonTcpClient client = new WatsonTcpClient("192.168.0.185", 5002);
         private void button1_Click(object sender, EventArgs e)
         {
-            // client.ServerConnected += Client_ServerConnected;
-            // client.ServerDisconnected += Client_ServerDisconnected;
-            // client.MessageReceived += Client_MessageReceived;
-            // client.Start();
-            // client.Send("\n\nPENIS");
+            client.ServerConnected += Client_ServerConnected;
+            client.ServerDisconnected += Client_ServerDisconnected;
+            client.MessageReceived += Client_MessageReceived;
+            client.Start();
+            client.Send("nm!" + nameTxtBox.Text);
             game ga = new game();
             ga.Show();
             Hide();
@@ -57,6 +57,18 @@ namespace DrawnWhispers
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void GuessBox_TextChanged(object sender, EventArgs e)
+        {
+            if (nameTxtBox.Text.Length <= 2)
+            {
+                button1.Enabled = false;
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
         }
     }
 }
