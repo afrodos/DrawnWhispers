@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -16,7 +15,6 @@ class gameUtils
     }
 
     private bool loaded = false;
-    private JavaScriptSerializer js = new JavaScriptSerializer();
     private dynamic jsonObject;
     private string jsonFilename;
     Random r = new Random();
