@@ -21,6 +21,14 @@ namespace dwserver
             Console.Read();
         }
         
+        static void printPpl()
+        {
+            foreach (var i in clients)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
         private static void Server_MessageReceived(object sender, MessageReceivedFromClientEventArgs e)
         {
             string response = Encoding.UTF8.GetString(e.Data);
@@ -31,6 +39,7 @@ namespace dwserver
                 Console.WriteLine("User: " + response.Substring(3) + " joined!");
             }
             Console.WriteLine("Message received from " + e.IpPort + ": " + response);
+            
         }
 
         private static void Server_ClientDisconnected(object sender, ClientDisconnectedEventArgs e)
@@ -41,11 +50,13 @@ namespace dwserver
                     clients.Remove(i);
             }
             Console.WriteLine("Client disconnected: " + e.IpPort + ": " + e.Reason.ToString());
+            printPpl();
         }
 
         private static void Server_ClientConnected(object sender, ClientConnectedEventArgs e)
         {
             Console.WriteLine("Client connected: " + e.IpPort);
+            printPpl();
         }
     }
 }

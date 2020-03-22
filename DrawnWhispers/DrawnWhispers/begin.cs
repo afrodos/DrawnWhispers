@@ -26,7 +26,7 @@ namespace DrawnWhispers
         gameUtils util = new gameUtils("descriptions.json");
         string[] imageFileNames = { "logo.png", "closeButton.png" };
 
-        WatsonTcpClient client = new WatsonTcpClient("192.168.0.185", 5002);
+        static WatsonTcpClient client = new WatsonTcpClient("192.168.0.111", 5002);
         private void button1_Click(object sender, EventArgs e)
         {
             client.ServerConnected += Client_ServerConnected;
