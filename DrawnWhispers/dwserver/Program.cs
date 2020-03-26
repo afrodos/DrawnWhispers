@@ -11,6 +11,7 @@ namespace dwserver
     {
         gameUtils util = new gameUtils();
         static List<string> clients = new List<string>();
+        static WatsonTcpServer server = new WatsonTcpServer("0.0.0.0", 5002);
         static void Main(string[] args)
         {
             server.ClientConnected += Server_ClientConnected; ;
@@ -56,7 +57,15 @@ namespace dwserver
         private static void Server_ClientConnected(object sender, ClientConnectedEventArgs e)
         {
             Console.WriteLine("Client connected: " + e.IpPort);
+            clients.Add(e.IpPort);
             printPpl();
         }
+
+        static void printPpl()
+        {
+            foreach (var i in clients)
+                Console.WriteLine(i);
+        }
+
     }
 }

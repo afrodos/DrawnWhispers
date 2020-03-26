@@ -31,9 +31,9 @@ namespace DrawnWhispers
         {
             global.client.Start();
             global.client.Send("nm!" + nameTxtBox.Text);
-            game ga = new game();
-            ga.Show();
-            Hide();
+            //game ga = new game();
+            //ga.Show();
+            //Hide();
         }
 
         

@@ -8,6 +8,6 @@ namespace DrawnWhispers
 {
     class global
     {
-        public static WatsonTcpClient client = new WatsonTcpClient("192.168.0.185", 5002); 
+        public static WatsonTcpClient client = new WatsonTcpClient("192.168.0.185", 5002);
     }
 }
