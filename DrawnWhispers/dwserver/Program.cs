@@ -21,8 +21,7 @@ namespace dwserver
 
             Console.Read();
         }
-
-        static WatsonTcpServer server = new WatsonTcpServer("0.0.0.0", 5002);
+        
         private static void Server_MessageReceived(object sender, MessageReceivedFromClientEventArgs e)
         {
             string response = Encoding.UTF8.GetString(e.Data);
@@ -37,6 +36,7 @@ namespace dwserver
                 server.Send(e.IpPort, response.Substring(5));
             }
             Console.WriteLine("Message received from " + e.IpPort + ": " + response);
+            
         }
 
         private static void Server_ClientDisconnected(object sender, ClientDisconnectedEventArgs e)
@@ -50,11 +50,13 @@ namespace dwserver
                 }
             }
             Console.WriteLine("Client disconnected: " + e.IpPort + ": " + e.Reason.ToString());
+            printPpl();
         }
 
         private static void Server_ClientConnected(object sender, ClientConnectedEventArgs e)
         {
             Console.WriteLine("Client connected: " + e.IpPort);
+            printPpl();
         }
     }
 }

@@ -152,7 +152,6 @@ namespace DrawnWhispers
                 case "huge":
                     pen.Width = (float)pensizes.huge;
                     break;
-
             }
 
         }
