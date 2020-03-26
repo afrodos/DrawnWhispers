@@ -26,7 +26,27 @@ namespace DrawnWhispers
             catch { MessageBox.Show("Error loading " + imageFileNames[3]); }
             try { pictureBox5.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[4])); }
             catch { MessageBox.Show("Error loading " + imageFileNames[4]); }
+            global.client.ServerConnected += Client_ServerConnected;
+            global.client.ServerDisconnected += Client_ServerDisconnected;
+            global.client.MessageReceived += Client_MessageReceived1;
+            global.client.Send("HALLO IK BEN WERKEND");
 
+        }
+
+        private void Client_MessageReceived1(object sender, WatsonTcp.MessageReceivedFromServerEventArgs e)
+        {
+            
+            MessageBox.Show("Message from server: " + Encoding.UTF8.GetString(e.Data));
+        }
+
+        private void Client_ServerDisconnected(object sender, EventArgs e)
+        {
+            Console.WriteLine("Server connected");
+        }
+
+        private void Client_ServerConnected(object sender, EventArgs e)
+        {
+            Console.WriteLine("Server disconnected");
         }
 
         //TODO: maak andere form die je bij het begin krijgt (title, naam invoeren, communicatie tussen 2 forms)
@@ -215,6 +235,11 @@ namespace DrawnWhispers
         private void topBar_MouseUp(object sender, MouseEventArgs e)
         {
             mouseisdown = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            global.client.Send("HAHAHAAHA");
         }
     }
 }

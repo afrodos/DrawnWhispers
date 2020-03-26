@@ -26,33 +26,16 @@ namespace DrawnWhispers
         gameUtils util = new gameUtils("descriptions.json");
         string[] imageFileNames = { "logo.png", "closeButton.png" };
 
-        WatsonTcpClient client = new WatsonTcpClient("192.168.0.185", 5002);
         private void button1_Click(object sender, EventArgs e)
         {
-            client.ServerConnected += Client_ServerConnected;
-            client.ServerDisconnected += Client_ServerDisconnected;
-            client.MessageReceived += Client_MessageReceived;
-            client.Start();
-            client.Send("nm!" + nameTxtBox.Text);
+            global.client.Start();
+            global.client.Send("nm!" + nameTxtBox.Text);
             game ga = new game();
             ga.Show();
             Hide();
         }
 
-        private void Client_MessageReceived(object sender, MessageReceivedFromServerEventArgs e)
-        {
-            MessageBox.Show("Message from server: " + Encoding.UTF8.GetString(e.Data));
-        }
-
-        private void Client_ServerDisconnected(object sender, EventArgs e)
-        {
-            Console.WriteLine("Server connected");
-        }
-
-        private void Client_ServerConnected(object sender, EventArgs e)
-        {
-            Console.WriteLine("Server disconnected");
-        }
+        
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
