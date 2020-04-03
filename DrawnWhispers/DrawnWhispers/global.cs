@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
-using WatsonTcp;
 
 namespace DrawnWhispers
 {
     class global
     {
-        public static WatsonTcpClient client = new WatsonTcpClient("192.168.0.185", 5002);
+        public static TcpClient client = new TcpClient();
+
+        public static void send(string message)
+        {
+            using (StreamWriter writer = new StreamWriter(client.GetStream(), Encoding.ASCII))
+            {
+                writer.Write(message);
+            }
+        }
+
     }
 }

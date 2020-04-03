@@ -51,7 +51,6 @@ namespace dwserver
                 }
             }
             Console.WriteLine("Client disconnected: " + e.IpPort + ": " + e.Reason.ToString());
-            printPpl();
         }
 
         private static void Server_ClientConnected(object sender, ClientConnectedEventArgs e)
