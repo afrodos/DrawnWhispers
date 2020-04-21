@@ -21,6 +21,7 @@ namespace DrawnWhispers
             catch { MessageBox.Show("Error loading " + imageFileNames[0]); }
             try { pictureBox2.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[1])); }
             catch { MessageBox.Show("Error loading " + imageFileNames[1]); }
+            
         }
 
         gameUtils util = new gameUtils("descriptions.json");
@@ -28,8 +29,6 @@ namespace DrawnWhispers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            global.client.Connect("192.168.0.111", 5002);
-            global.send("hallo");
             //game ga = new game();
             //ga.Show();
             //Hide();
@@ -39,7 +38,6 @@ namespace DrawnWhispers
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-            global.client.Close();
             Environment.Exit(0);
         }
 
