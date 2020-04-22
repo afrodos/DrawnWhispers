@@ -11,6 +11,7 @@ namespace dwserver
         private TcpClient client;
         private StringBuilder sb = new StringBuilder();
 
+
         public string Name { get; }
 
         public State(string name, TcpClient client)
@@ -39,7 +40,7 @@ namespace dwserver
 
         static void Main(string[] args)
         {
-            listen = new TcpListener(System.Net.IPAddress.Parse("127.0.0.1"), 4004);
+            listen = new TcpListener(System.Net.IPAddress.Parse("0.0.0.0"), 4004);
             serverthread = new Thread(new ThreadStart(DoListen));
             serverthread.Start();
         }
@@ -66,6 +67,8 @@ namespace dwserver
         {
             // Read data
             TcpClient tClient = (TcpClient)client;
+
+            gameUtils gutils = new gameUtils();
 
             Console.WriteLine("Client (Thread: {0}): Connected!", Thread.CurrentThread.ManagedThreadId);
             byte[] bytes = Encoding.ASCII.GetBytes("Enter name: ");
@@ -113,6 +116,16 @@ namespace dwserver
                     connections.Remove(Thread.CurrentThread.ManagedThreadId);
                     Console.WriteLine("\tTotal connections: {0}", connections.Count);
                     break;
+                }
+                else if (text == "/start")
+                {
+                    Console.WriteLine("game starting");
+                    string[] names = new string[connections.Count];
+                    foreach (var cl in connections)
+                    {
+                        //names. cl.Value;
+                    }
+                   //gutils.getOrder();
                 }
 
                 if (!tClient.Connected)
