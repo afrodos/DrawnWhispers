@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Sockets;
 
 namespace DrawnWhispers
 {
@@ -26,16 +27,24 @@ namespace DrawnWhispers
 
         gameUtils util = new gameUtils("descriptions.json");
         string[] imageFileNames = { "logo.png", "closeButton.png" };
-
         private void button1_Click(object sender, EventArgs e)
         {
+            //Byte[] data = System.Text.Encoding.ASCII.GetBytes(nameTxtBox.Text);
+            NetworkStream stream = global.tcpclient.GetStream();
+            Byte[] data = new Byte[256];
+            String responseData = String.Empty;
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+            data = Encoding.ASCII.GetBytes(nameTxtBox.Text);
+            if (responseData == "Enter name: ")
+                MessageBox.Show("Test");
+            Byte[] daata = System.Text.Encoding.ASCII.GetBytes("testlololol");
+            stream.Write(daata, 0, daata.Length);
+            stream.Close();
             //game ga = new game();
             //ga.Show();
             //Hide();
         }
-
-        
-
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);

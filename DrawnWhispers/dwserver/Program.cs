@@ -120,12 +120,12 @@ namespace dwserver
                 else if (text == "/start")
                 {
                     Console.WriteLine("game starting");
-                    string[] names = new string[connections.Count];
+                    List<string> temp = new List<string>();
                     foreach (var cl in connections)
                     {
-                        //names. cl.Value;
+                        temp.Add(cl.Value.ToString()); 
                     }
-                   //gutils.getOrder();
+                    string[,] order = gutils.getOrder(temp.ToArray());
                 }
 
                 if (!tClient.Connected)

@@ -66,6 +66,7 @@
       <DependentUpon>begin.cs</DependentUpon>
     </Compile>
     <Compile Include="gameUtils.cs" />
+    <Compile Include="global.cs" />
     <Compile Include="guess.cs">
       <SubType>Form</SubType>
     </Compile>
