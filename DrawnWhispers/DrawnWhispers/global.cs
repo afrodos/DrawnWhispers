@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -9,7 +10,13 @@ namespace DrawnWhispers
 {
     class global
     {
-        public static TcpClient tcpclient = new TcpClient("192.168.0.185", 4004);
+        public void init(string IP)
+        {
+            ip = IP;
+        }
+
+        static string ip = "";
+        public static TcpClient tcpclient = new TcpClient(ip, 4004);
 
     }
 }
