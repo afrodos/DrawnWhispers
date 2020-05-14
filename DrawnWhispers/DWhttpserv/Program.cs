@@ -19,20 +19,20 @@ namespace DWhttpserv
             listener.Prefixes.Add(ip);
             listener.Start();
             Console.WriteLine("Server started on: " + ip);
+            bool temp = true;
             while (true)
             {
                 HttpListenerContext context = listener.GetContext();
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
                 string reqData = GetRequestData(request);
-                bool temp = true;
                 if (!reqData.StartsWith("/createLobby"))
                 {
                     Console.WriteLine("Unknown command received: " + reqData);
                     responseString = "Unknown command";
                     temp = false;
                 }
-                else if(activeLobbies.Contains(reqData.Split(' ')[1]))
+                if(activeLobbies.Contains(reqData.Split(' ')[1]))
                 {
                     responseString = "joinlobby";
                     temp = false;
@@ -40,7 +40,11 @@ namespace DWhttpserv
                 if (temp)
                 {
                     StartTheThread(reqData);
-                    responseString = "Lobby created";
+                    responseString = "joinlobby";
+                }
+                foreach (var i in activeLobbies)
+                {
+                    Console.WriteLine(i);
                 }
                 byte[] buffer = Encoding.UTF8.GetBytes(responseString);
                 using (Stream outStream = response.OutputStream)
@@ -76,7 +80,6 @@ namespace DWhttpserv
             void startLobby(string lobbyCommand)
             {
                 string responseStr = "";
-                Thread.CurrentThread.Abort();
                 string lobbyName = lobbyCommand.Split(' ')[1];
                 List<string> clientNames = new List<string>();
                 activeLobbies.Add(lobbyName);
