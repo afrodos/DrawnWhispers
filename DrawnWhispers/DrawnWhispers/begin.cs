@@ -27,26 +27,10 @@ namespace DrawnWhispers
 
         gameUtils util = new gameUtils("descriptions.json");
         string[] imageFileNames = { "logo.png", "closeButton.png" };
-        global l = new global();
         
         private void button1_Click(object sender, EventArgs e)
         {
-            game ga = new game();
-            ga.Show();
-            Hide();
-            l.init("192.168.0.111");
-            //Byte[] data = System.Text.Encoding.ASCII.GetBytes(nameTxtBox.Text);
-            NetworkStream stream = global.tcpclient.GetStream();
-            Byte[] data = new Byte[256];
-            String responseData = String.Empty;
-            Int32 bytes = stream.Read(data, 0, data.Length);
-            responseData = Encoding.ASCII.GetString(data, 0, bytes);
-            data = Encoding.ASCII.GetBytes(nameTxtBox.Text);
-            if (responseData == "Enter name: ")
-                MessageBox.Show("Test");
-            Byte[] daata = System.Text.Encoding.ASCII.GetBytes("testlololol");
-            stream.Write(daata, 0, daata.Length);
-            stream.Flush();
+            nameTxtBox.Text = util.getOrderStr(new string[] { "eiji", "davy"});
             //game ga = new game();
             //ga.Show();
             //Hide();

@@ -32,11 +32,6 @@ class gameUtils
         return orderedArr; 
     }//YEEEEEEEEEEEEEEEEEEEEEEES HIJ DOET HET
 
-    /// <summary>
-    /// Return the order first seperated by , then by | (2darray)
-    /// </summary>
-    /// <param name="people"></param>
-    /// <returns></returns>
     public string getOrderStr(string[] people)
     {
         string [,] order = getOrder(people);

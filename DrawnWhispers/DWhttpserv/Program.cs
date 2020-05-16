@@ -87,6 +87,7 @@ namespace DWhttpserv
                 HttpListener listen = new HttpListener();
                 listen.Prefixes.Add(ip + lobbyName + "/");
                 listen.Start();
+                gameUtils util = new gameUtils();   
                 while (true)
                 {
                     HttpListenerContext context = listen.GetContext();
@@ -122,6 +123,15 @@ namespace DWhttpserv
                             {
                                 responseStr = "User not in lobby";
                             }
+                            break;
+                        case "/getUsers":
+                            responseStr = string.Join("|", clientNames.ToArray());
+                            break;
+                        case "/getOrder":
+                            responseStr = util.getOrderStr(clientNames.ToArray());
+                            break;
+                        case "/start":
+
                             break;
 
                         default:
