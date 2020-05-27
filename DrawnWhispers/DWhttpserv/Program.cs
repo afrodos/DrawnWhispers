@@ -26,7 +26,7 @@ namespace DWhttpserv
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
                 string reqData = GetRequestData(request);
-                if (!reqData.StartsWith("/createLobby"))
+                if (!reqData.StartsWith("/createlobby"))
                 {
                     Console.WriteLine("Unknown command received: " + reqData);
                     responseString = "Unknown command";

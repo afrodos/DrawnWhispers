@@ -8,15 +8,8 @@ using System.Threading.Tasks;
 
 namespace DrawnWhispers
 {
-    class global
+    static class global
     {
-        public void init(string IP)
-        {
-            ip = IP;
-        }
-
-        static string ip = "";
-        public static TcpClient tcpclient = new TcpClient(ip, 4004);
-
+        public static string name;
     }
 }

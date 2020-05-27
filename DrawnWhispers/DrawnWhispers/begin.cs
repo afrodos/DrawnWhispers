@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Sockets;
+using System.Net.Http;
 
 namespace DrawnWhispers
 {
@@ -28,13 +29,67 @@ namespace DrawnWhispers
         gameUtils util = new gameUtils("descriptions.json");
         string[] imageFileNames = { "logo.png", "closeButton.png" };
         
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            nameTxtBox.Text = util.getOrderStr(new string[] { "eiji", "davy"});
+            global.name = nameTxtBox.Text;
+            string res = await ExecuteCommand("/createlobby " + lobbyTxtBox.Text);
+            switch (res) 
+            {
+                case "Lobby created":
+                    joinLobby(lobbyTxtBox.Text);
+                    break;
+                case "joinlobby":
+                    joinLobby(lobbyTxtBox.Text);
+                    break;
+                case "Unknown command":
+                    MessageBox.Show("Internal error");
+                    break;
+                default:
+                    MessageBox.Show("Unexpected Error");
+                    break;
+            }
+
+
             //game ga = new game();
             //ga.Show();
             //Hide();
         }
+
+        async void joinLobby(string lobbyname)
+        {
+            string res = await ExecuteCommand("/join " + global.name, lobbyname);
+            switch (res) 
+            {
+                case "Username already taken":
+                    MessageBox.Show(res);
+                    return;
+                case "Successfully joined":
+                    break;
+            }
+
+            while (true)
+            {
+                string usersStr = await ExecuteCommand("/getUsers", lobbyname);
+                listBox1.Items.Clear();
+                foreach (var i in usersStr.Split('|'))
+                    listBox1.Items.Add(i);
+                Thread.Sleep(2000);
+            }
+
+        }
+
+        async Task<string> ExecuteCommand(string command, string lobby = "")
+        {
+            HttpClient client = new HttpClient();
+            using (var requestContent = new StringContent(command, Encoding.UTF8, "text/plain"))
+            {
+                if (lobby.Length > 0)
+                    lobby += "/";
+                HttpResponseMessage response = await client.PostAsync("http://localhost:4004/" + lobby, requestContent);
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
