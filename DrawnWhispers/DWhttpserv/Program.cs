@@ -37,10 +37,16 @@ namespace DWhttpserv
                     responseString = "joinlobby";
                     temp = false;
                 }
+                else
+                {
+                    responseString = "makebutton";
+                    StartTheThread(reqData);
+                    temp = false;
+                }
                 if (temp)
                 {
                     StartTheThread(reqData);
-                    responseString = "joinlobby";
+                    responseString = "Lobby created";
                 }
                 foreach (var i in activeLobbies)
                 {

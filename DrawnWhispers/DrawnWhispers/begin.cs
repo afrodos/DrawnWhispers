@@ -14,9 +14,9 @@ using System.Net.Http;
 
 namespace DrawnWhispers
 {
-    public partial class begin : Form
+    public partial class beginBtn : Form
     {
-        public begin()
+        public beginBtn()
         {
             InitializeComponent();
             try { pictureBox1.Image = Image.FromFile(String.Format(@"data\{0}", imageFileNames[0])); }
@@ -33,13 +33,20 @@ namespace DrawnWhispers
         {
             global.name = nameTxtBox.Text;
             string res = await ExecuteCommand("/createlobby " + lobbyTxtBox.Text);
+            Thread t = new Thread(new ParameterizedThreadStart(joinLobby));
             switch (res) 
             {
-                case "Lobby created":
-                    joinLobby(lobbyTxtBox.Text);
-                    break;
                 case "joinlobby":
-                    joinLobby(lobbyTxtBox.Text);
+                    
+                    t.Start(lobbyTxtBox.Text);
+                    //joinLobby(lobbyTxtBox.Text);
+                    break;
+                case "makebutton":
+                    Invoke(new Action(() =>
+                    {
+                        startBtn.Visible = true;
+                    }));
+                    t.Start(lobbyTxtBox.Text);
                     break;
                 case "Unknown command":
                     MessageBox.Show("Internal error");
@@ -52,12 +59,24 @@ namespace DrawnWhispers
 
             //game ga = new game();
             //ga.Show();
-            //Hide();
+            //Hide(); 
         }
 
-        async void joinLobby(string lobbyname)
+        async void joinAsLobbyLeader(object lobbyname)
         {
-            string res = await ExecuteCommand("/join " + global.name, lobbyname);
+            string res = await ExecuteCommand("/joinleader " + global.name, (string)lobbyname);
+            switch (res)
+            {
+                case "Error":
+                    break;
+                case "Successfully joined":
+                    
+                    break;
+            }
+        }
+        async void joinLobby(object lobbyname)
+        {
+            string res = await ExecuteCommand("/join " + global.name, (string)lobbyname);
             switch (res) 
             {
                 case "Username already taken":
@@ -69,10 +88,16 @@ namespace DrawnWhispers
 
             while (true)
             {
-                string usersStr = await ExecuteCommand("/getUsers", lobbyname);
-                listBox1.Items.Clear();
+                string usersStr = await ExecuteCommand("/getUsers", (string)lobbyname);
+                Invoke(new Action(() =>
+                {
+                    listBox1.Items.Clear();
+                }));
                 foreach (var i in usersStr.Split('|'))
-                    listBox1.Items.Add(i);
+                    Invoke(new Action(() =>
+                    {
+                        listBox1.Items.Add(i);
+                    }));
                 Thread.Sleep(2000);
             }
 
@@ -105,6 +130,11 @@ namespace DrawnWhispers
             {
                 button1.Enabled = true;
             }
+        }
+
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("starting server");
         }
     }
 }
